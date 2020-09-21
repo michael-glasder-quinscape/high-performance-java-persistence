@@ -1,6 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.equality;
 
-import com.vladmihalcea.book.hpjp.hibernate.identifier.Identifiable;
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import com.vladmihalcea.book.hpjp.util.AbstractTest;
 import org.hibernate.Session;
 
@@ -54,7 +54,7 @@ public abstract class AbstractEqualityCheckTest<T extends Identifiable<? extends
         });
 
         doInJPA(entityManager -> {
-            T _entity = entityManager.find(clazz, entity.getId());
+            T _entity = entityManager.find(clazz, entity.getIdentifier());
             assertTrue(
                     "The entity is not found in the Set after it's loaded in a different Persistence Context.",
                     tuples.contains(_entity)
@@ -62,7 +62,7 @@ public abstract class AbstractEqualityCheckTest<T extends Identifiable<? extends
         });
 
         doInJPA(entityManager -> {
-            T _entity = entityManager.getReference(clazz, entity.getId());
+            T _entity = entityManager.getReference(clazz, entity.getIdentifier());
             assertTrue(
                     "The entity is not in the Set found after it's loaded as a proxy in a different Persistence Context.",
                     tuples.contains(_entity)
@@ -72,7 +72,7 @@ public abstract class AbstractEqualityCheckTest<T extends Identifiable<? extends
         doInJPA(entityManager -> {
             T entityProxy = entityManager.getReference(
                     clazz,
-                    entity.getId()
+                    entity.getIdentifier()
             );
             assertTrue(
                     "The entity is not equal with the entity proxy.",
@@ -82,7 +82,7 @@ public abstract class AbstractEqualityCheckTest<T extends Identifiable<? extends
         T deletedEntity = doInJPA(entityManager -> {
             T _entity = entityManager.getReference(
                     clazz,
-                    entity.getId()
+                    entity.getIdentifier()
             );
             entityManager.remove(_entity);
             return _entity;

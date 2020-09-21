@@ -7,12 +7,7 @@ import com.vladmihalcea.book.hpjp.util.ReflectionUtils;
  */
 public enum Database {
 	HSQLDB(HSQLDBDataSourceProvider.class),
-	POSTGRESQL(PostgreSQLDataSourceProvider.class),
-	ORACLE(OracleDataSourceProvider.class),
-	MYSQL(MySQLDataSourceProvider.class),
-	MARIADB(MariaDBDataSourceProvider.class),
-	SQLSERVER(SQLServerDataSourceProvider.class),
-	COCKROACHDB(CockroachDBDataSourceProvider.class);
+	ORACLE(OracleDataSourceProvider.class);
 
 	private Class<? extends DataSourceProvider> dataSourceProviderClass;
 

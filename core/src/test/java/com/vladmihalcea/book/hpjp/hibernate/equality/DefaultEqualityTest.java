@@ -1,6 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.equality;
 
-import com.vladmihalcea.book.hpjp.hibernate.identifier.Identifiable;
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -34,18 +34,17 @@ public class DefaultEqualityTest
     @Entity(name = "Post")
     @Table(name = "post")
     public static class Post implements Identifiable<Long> {
-
         @Id
         @GeneratedValue
         private Long id;
 
         private String title;
 
-        public Long getId() {
+        public Long getIdentifier() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setIdentifier(Long id) {
             this.id = id;
         }
 

@@ -1,6 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.equality;
 
-import com.vladmihalcea.book.hpjp.hibernate.identifier.Identifiable;
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import org.hibernate.annotations.NaturalId;
 import org.junit.Test;
 
@@ -57,11 +57,11 @@ public class NaturalIdEqualityTest
             return Objects.hash(getIsbn());
         }
 
-        public Long getId() {
+        public Long getIdentifier() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setIdentifier(Long id) {
             this.id = id;
         }
 

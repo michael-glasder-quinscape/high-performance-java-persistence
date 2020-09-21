@@ -1,6 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.equality;
 
-import com.vladmihalcea.book.hpjp.hibernate.identifier.Identifiable;
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import org.junit.Test;
 
 import javax.persistence.Entity;
@@ -51,20 +51,12 @@ public class IdEqualityTest
 
             Post other = (Post) o;
 
-            return id != null && id.equals(other.getId());
+            return id != null && id.equals(other.getIdentifier());
         }
 
         @Override
         public int hashCode() {
             return 31;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
         }
 
         public String getTitle() {
@@ -73,6 +65,16 @@ public class IdEqualityTest
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        @Override public Long getIdentifier()
+        {
+            return id;
+        }
+
+        @Override public void setIdentifier(Long id)
+        {
+            this.id = id;
         }
     }
 }

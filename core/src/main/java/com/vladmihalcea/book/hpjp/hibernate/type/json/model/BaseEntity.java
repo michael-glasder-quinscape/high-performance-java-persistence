@@ -1,5 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.type.json.model;
 
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
@@ -11,7 +12,6 @@ import org.hibernate.annotations.TypeDefs;
 import com.vladmihalcea.book.hpjp.hibernate.type.array.IntArrayType;
 import com.vladmihalcea.book.hpjp.hibernate.type.array.StringArrayType;
 import com.vladmihalcea.book.hpjp.hibernate.type.json.JsonBinaryType;
-import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
 import com.vladmihalcea.book.hpjp.hibernate.type.json.JsonStringType;
 
 /**
@@ -23,10 +23,10 @@ import com.vladmihalcea.book.hpjp.hibernate.type.json.JsonStringType;
     @TypeDef(name = "enum-array", typeClass = EnumArrayType.class),
     @TypeDef(name = "json", typeClass = JsonStringType.class),
     @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
-    @TypeDef(name = "jsonb-node", typeClass = JsonNodeBinaryType.class),
 })
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity implements Identifiable<Long>
+{
 
     @Id
     private Long id;
@@ -34,11 +34,11 @@ public class BaseEntity {
     @Version
     private Integer version;
 
-    public Long getId() {
+    public Long getIdentifier() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setIdentifier(Long id) {
         this.id = id;
     }
 

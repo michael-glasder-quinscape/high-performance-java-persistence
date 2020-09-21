@@ -1,6 +1,6 @@
 package com.vladmihalcea.book.hpjp.hibernate.equality;
 
-import com.vladmihalcea.book.hpjp.hibernate.identifier.Identifiable;
+import de.conti.tires.oe.platform.common.base.Identifiable;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -46,18 +46,18 @@ public class DefaultIdEqualityTest
         public boolean equals(Object o) {
             if (this == o) return true;
             if (!(o instanceof Post)) return false;
-            return Objects.equals(id, ((Post) o).getId());
+            return Objects.equals(id, ((Post) o).getIdentifier());
         }
         @Override
         public int hashCode() {
-            return Objects.hash(getId());
+            return Objects.hash(getIdentifier());
         }
 
-        public Long getId() {
+        public Long getIdentifier() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setIdentifier(Long id) {
             this.id = id;
         }
 
